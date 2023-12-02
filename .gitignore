@@ -2,7 +2,7 @@
 project/grunt/bower_components/*
 
 # Except for this specific file
-!project/grunt//bower_components/bower.json
+!project/grunt/bower_components/bower.json
 
 # Node modules
 project/grunt/node_modules

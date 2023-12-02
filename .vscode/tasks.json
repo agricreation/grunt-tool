@@ -3,12 +3,16 @@
 	"tasks": [
 		{
 			"type": "npm",
-			"script": "test",
+			"script": "grunt",
 			"path": "project/grunt",
-			"group": "test",
 			"problemMatcher": [],
-			"label": "npm: test - project/grunt",
-			"detail": "echo \"Error: no test specified\" && exit 1"
+			"label": "npm: grunt - project/grunt",
+			"detail": "cd /Users/agricreations/Desktop/testing/grunt-tool/project/grunt && grunt"
+		},
+		{
+			"label": "Apache error log",
+			"type": "shell",
+			"command": "tail -f /var/log/apche2/error.log"
 		}
 	]
 }

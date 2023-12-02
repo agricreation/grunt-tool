@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"grunt": "cd /Users/agricreations/Desktop/testing/grunt-tool/project/grunt && grunt"
 	},
 	"author": "",
 	"license": "ISC",
@@ -14,6 +14,7 @@
 		"grunt-contrib-copy": "^1.0.0",
 		"grunt-contrib-cssmin": "^5.0.0",
 		"grunt-contrib-obfuscator": "^8.0.0",
+		"grunt-contrib-sass": "^2.0.0",
 		"grunt-contrib-uglify": "^5.2.2",
 		"grunt-contrib-watch": "^1.1.0"
 	},
@@ -39,5 +40,8 @@
 				}
 			}
 		}
+	},
+	"devDependencies": {
+		"grunt-sass": "^3.1.0"
 	}
 }

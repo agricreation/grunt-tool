@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../scss/style.scss"],"names":[],"mappings":";AAAA,CAAC,SAAS,CAAC;AACX,IAAI,EAAE,CAAC;AACP,QAAQ,KAAK,CAAC,CAAC,GAAG,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,GAAG,EAAE;AAC/B,IAAI,CAAC;AACL","file":"style.scss","sourcesContent":[".container{\n    h1{\n        color: rgb(0, 13, 255);\n    }\n}"]}

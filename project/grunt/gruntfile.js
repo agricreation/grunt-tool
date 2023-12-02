@@ -2,7 +2,7 @@ module.exports = function (grunt) {
   grunt.registerTask("hellow", function () {
     console.log("i am grunt running");
   });
-
+  
   grunt.initConfig({
     concat: {
       options: {
@@ -11,14 +11,19 @@ module.exports = function (grunt) {
         banner: "/* Processed by grunt  */ \n",
       },
       css: {
-        src: ["../css/app.css", "../css/style.css"],
+        src: ["../css/**/*.css"],
         dest: "dist/css/app.css",
       },
       js: {
-        src: ["../js/app.js"],
+        src: ["../js/**/*.js"],
         dest: "dist/js/app.js",
       },
+      scss: {
+        src: ["../scss/**/*.scss"],
+        dest: "dist/scss/style.scss",
+      },
     },
+
     cssmin: {
       options: {
         mergeIntoShorthands: false,
@@ -29,7 +34,29 @@ module.exports = function (grunt) {
           "../../htdocs/css/app.css": ["dist/css/app.css"],
         },
       },
+      sass:{
+        dist:{
+          options:{
+            style: 'expanded'
+          },
+          files:{
+            "../../htdocs/css/style.css": ["dist/scss/style.scss"],
+          }
+        }
+      }
     },
+
+    sass: {
+      dist: {
+        options: {
+          style: 'expanded',
+        },
+        files: {
+          '../../htdocs/css/style.css': 'dist/scss/style.scss',
+        },
+      },
+    },    
+
     uglify: {
       my_target: {
         options: {
@@ -37,9 +64,10 @@ module.exports = function (grunt) {
         },
         files: {
           "../../htdocs/js/app.js": ["dist/js/app.js"],
-        },
+        },  
       },
     },
+
     copy: {
       bower: {
         files: [
@@ -53,24 +81,26 @@ module.exports = function (grunt) {
         ],
       },
     },
+
     obfuscator: {
       options: {
-          // banner: '// obfuscated with grunt-contrib-obfuscator.\n',
-          // // debugProtection: true,
-          // debugProtectionInterval: true,
-          // domainLock: ['www.example.com']
+        // banner: '// obfuscated with grunt-contrib-obfuscator.\n',
+        // // debugProtection: true,
+        // debugProtectionInterval: true,
+        // domainLock: ['www.example.com']
       },
       task1: {
-          options: {
-              // options for each sub task
-          },
-          files: {
-              '../../htdocs/js/app.o.js': [
-                  'dist/js/app.js',
-              ]
-          }
+        options: {
+          // options for each sub task
+        },
+        files: {
+          '../../htdocs/js/app.o.js': [
+            'dist/js/app.js',
+          ]
+        }
       }
-  },
+    },
+    
     watch: {
       css: {
         files: ["../css/**/*.css"],
@@ -86,20 +116,37 @@ module.exports = function (grunt) {
           spawn: false,
         },
       },
+      scss: {
+        files: [        
+          '../scss/**/*.scss'
+        ],
+        tasks: ['concat:scss','sass', 'cssmin:scss'],
+        options: {
+          spawn: false,
+        },
+      }
     },
-  });
 
+  });
+  
   grunt.loadNpmTasks("grunt-contrib-concat");
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-contrib-cssmin");
   grunt.loadNpmTasks("grunt-contrib-uglify");
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-obfuscator');
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  // grunt.loadNpmTasks('grunt-sass');
+  
+  grunt.registerTask('css',['concat:css','cssmin','sass']);    
+	grunt.registerTask('js',['concat:js','uglify','obfuscator']); 
+
   grunt.registerTask("default", [
     "hellow",
     "copy",
     "concat",
     "cssmin",
+    'sass',
     "uglify",
     'obfuscator',
     "watch",
