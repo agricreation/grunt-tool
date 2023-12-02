@@ -1,0 +1,4 @@
+# Bower
+project/grunt/bower_components/
+# Node modules
+project/grunt/node_modules

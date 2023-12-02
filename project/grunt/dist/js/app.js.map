@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../js/app.js"],"names":[],"mappings":";AAAA,KAAK,EAAE,OAAO,CAAC,EAAE,CAAC,KAAK,CAAC,WAAW,CAAC,GAAG,CAAC,GAAG","file":"app.js","sourcesContent":["alert('welcome to grunt automations for dev');"]}
